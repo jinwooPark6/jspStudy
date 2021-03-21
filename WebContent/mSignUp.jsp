@@ -8,14 +8,12 @@
 <title>Insert title here</title>
 </head>
 	<body>
-		
 		<%!
 		String m_name;
 		String m_pass;
 		String m_gender;
 		String m_residence;
 		String[] m_hobby;
-		
 		%>
 		
 		<%
@@ -38,6 +36,5 @@
 		%><br>
 		m_residence : <%=m_residence %><br>	
 		
-				
 	</body>
 </html>

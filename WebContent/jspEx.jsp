@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
 		%>
 		
 		<!-- 표현식 태그 -->
-		num is <%= num %>
+		num is <%= num %>jspEx.jsp
 		
 		<%@ include file="footer.jsp"%>
 		
