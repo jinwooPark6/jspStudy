@@ -5,13 +5,12 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-@WebServlet("/loginCon")
-public class LoginCon extends HttpServlet {
+import javax.servlet.http.HttpSession;
+@WebServlet("/loginCon2")
+public class LoginCon2 extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -23,31 +22,13 @@ public class LoginCon extends HttpServlet {
 		out.print("mID: " + mID);
 		out.print("mPW: " + mPW);
 		
-		Cookie[] cookies = request.getCookies();
-		Cookie cookie = null;
+		HttpSession session = request.getSession();
+		session.setAttribute("memberId", mID);
 		
-		for(Cookie c : cookies) {
-			System.out.println("c.getName() : " + c.getName() + "c.getValue() : " + c.getValue());
-			
-			if(c.getName().equals("memberId")) {
-				cookie = c;
-			}
-		}
-		
-		if(cookie == null) {
-			System.out.println("cookie is null");
-			cookie = new Cookie("memberId", mID);
-		}
-		
-		response.addCookie(cookie);
-		cookie.setMaxAge(60*60);
-		
-		response.sendRedirect("loginOk.jsp");
+		response.sendRedirect("loginOk2.jsp");
 	}
-		
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
