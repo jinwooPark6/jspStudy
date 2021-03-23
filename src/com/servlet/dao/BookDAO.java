@@ -6,10 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.servlet.dto.BookDTO;
 
 public class BookDAO {
 
+//	DataSource dataSource;
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String id = "oracle";
@@ -18,6 +23,8 @@ public class BookDAO {
 	public BookDAO() {
 		try {
 			Class.forName(driver);
+			Context context = new InitialContext();
+//			dataSource = (DataSource)context.lookup("java:comp:/env/jdbc/Oracle11g");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -33,6 +40,7 @@ public class BookDAO {
 		
 		try {
 			con = DriverManager.getConnection(url, id, pw);
+//			con = dataSource.getConnection();
 			String sql = "SELECT * FROM book";
 			pstmt = con.prepareStatement(sql);
 			res = pstmt.executeQuery();
